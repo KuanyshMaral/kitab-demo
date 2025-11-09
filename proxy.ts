@@ -7,7 +7,12 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    String.raw`/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)`,
+    /*
+     * Сопоставляем все пути, КРОМЕ:
+     * - статических файлов _next (static, image)
+     * - favicon.ico
+     * - любых файлов с расширениями (svg, png, jpg, jpeg, gif, webp)
+     */
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 }
- 
